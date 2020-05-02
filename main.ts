@@ -16,7 +16,7 @@ namespace test {
     //% block="analog output|%tpins|value|%value"
     //% tpins.fieldEditor="gridpicker"
     //% tpins.fieldOptins.columns=3
-    export function analog_writepin(tpins: AnalogPin, value:number) :void{
+    export function analog_writepin(tpins: AnalogPin, tvalue:number) :void{
         pins.analogWritePin(tpins,tvalue)
     }
     

@@ -23,6 +23,9 @@ namespace test {
     //% block="analog output|%tpins| value |%value"
     //% tpins.fieldEditor="gridpicker"
     //% tpins.fieldOptins.columns=3
+    //% value.defl=0
+    //% value.min=0
+    //% value.max=255	
     export function analog_writepin(tpins: AnalogPin, value:number) :void{
         pins.analogWritePin(tpins,value)
     }

@@ -18,4 +18,13 @@ namespace test {
     export function digital_writepin(tname: DigitalPin, tvalue: number): void {
         pins.digitalWritePin(tname, tvalue)
     }
+    
+    //% blockId=analog_writepin 
+    //% block="analog write pin |%tname| to |%tvalue"
+    //% tname.fieldEditor="gridpicker" 
+    //% tname.fieldOptions.columns=3 
+    export function analog_writepin(tname: AnalongPin, tvalue: number): void {
+        pins.analogWritePin(tname, tvalue)
+    }
+    
 }

@@ -21,7 +21,7 @@ namespace test {
     }
     
     
-    //% weight=30
+  
     //% blockID=digital_writepin
     //% block="digital write pin|%tname| to |% tvalue"
     //% tpins.fieldEditor="gridpicker"

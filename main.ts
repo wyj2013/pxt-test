@@ -22,7 +22,7 @@ namespace test {
     export function analog_writepin(tpins: AnalogPin, value:number) :void{
         pins.analogWritePin(tpins,tvalue)
     }
-    //% weight=20
+    //% weight=30
     //% blockID=digital_writepin
     //% block="digital write pin|%tname| to |% tvalue"
     //% tpins.fieldEditor="gridpicker"

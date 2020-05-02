@@ -7,10 +7,7 @@
 //% block="test" color="#88ccff"
 namespace test {
 
-    //% block
-    export function helloWorld() {
-
-    }
+ 
 
     // note that Caml casing yields lower case
     // block text with spaces
@@ -22,6 +19,8 @@ namespace test {
     export function analog_writepin(tpins: AnalogPin, value:number) :void{
         pins.analogWritePin(tpins,tvalue)
     }
+    
+    
     //% weight=30
     //% blockID=digital_writepin
     //% block="digital write pin|%tname| to |% tvalue"

@@ -1,0 +1,15 @@
+{
+    "name": "test", 
+    "version": "0.0.1", 
+    "description": "Copyright belongs to kodorobot", 
+    "license": "MIT", 
+    "dependencies": { 
+        "core": "*"
+    },
+    "files": [ 
+        "main.ts",
+        "README.md"
+    ],
+
+    "public": true
+}

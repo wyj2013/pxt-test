@@ -1,0 +1,17 @@
+# Secrets and local credentials
+mqtt_01/secrets.h
+
+# Local build outputs
+build/
+build_led/
+build_mqtt/
+
+# Local document-generation helpers and temporary validation files
+__pycache__/
+*.pyc
+
+# Local backups and conversation records may contain credentials
+project_backup_*.zip
+*對話紀錄*.md
+下次繼續專案說明.txt
+image/

@@ -5,30 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ESP8266 PMS5003 空氣品質物聯網專案</title>
   <style>
-    :root { --blue:#1167a8; --teal:#159a9c; --ink:#17324d; --bg:#f4f9fc; }
+    :root { --deep:#063b5c; --blue:#087e9f; --sea:#11a6a6; --foam:#e9fbf7; --ink:#123b52; --bg:#e8f7f8; --coral:#f28c70; }
     * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); background:var(--bg); font-family:"Microsoft JhengHei", system-ui, sans-serif; line-height:1.7; }
-    header { padding:64px 20px 56px; color:white; text-align:center; background:linear-gradient(135deg,#075985,#159a9c); }
+    body { margin:0; color:var(--ink); background:linear-gradient(180deg,#d9f4f5 0%,var(--bg) 48%,#f6fcfa 100%); font-family:"Microsoft JhengHei",system-ui,sans-serif; line-height:1.7; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.32; background-image:radial-gradient(circle at 12% 22%,#fff 0 3px,transparent 4px),radial-gradient(circle at 82% 36%,#fff 0 5px,transparent 6px),radial-gradient(circle at 62% 78%,#fff 0 3px,transparent 4px); background-size:180px 220px,260px 310px,210px 270px; z-index:-1; }
+    header { position:relative; overflow:hidden; padding:72px 20px 92px; color:white; text-align:center; background:linear-gradient(135deg,#032d4a 0%,#075985 48%,#10a5a5 100%); box-shadow:0 10px 28px #064b6a40; }
+    header::after { content:""; position:absolute; left:-5%; right:-5%; bottom:-42px; height:82px; background:var(--bg); border-radius:50% 50% 0 0 / 70% 70% 0 0; }
     header h1 { margin:0 0 10px; font-size:clamp(30px,5vw,54px); }
-    header p { margin:0; font-size:18px; opacity:.95; }
-    main { width:min(1120px, calc(100% - 32px)); margin:30px auto 60px; }
-    section { margin:26px 0; padding:28px; background:white; border-radius:18px; box-shadow:0 8px 24px #0b416d12; }
-    h2 { margin-top:0; color:var(--blue); border-left:6px solid var(--teal); padding-left:12px; }
+    header p { margin:0; font-size:18px; opacity:.95; letter-spacing:1px; }
+    main { position:relative; z-index:1; width:min(1120px, calc(100% - 32px)); margin:30px auto 60px; }
+    section { margin:26px 0; padding:28px; background:#ffffffeb; border:1px solid #a8dfe0; border-radius:22px; box-shadow:0 10px 28px #0759851c; }
+    section:hover { box-shadow:0 14px 32px #0759852b; transform:translateY(-2px); transition:.25s ease; }
+    h2 { margin-top:0; color:var(--deep); border-left:6px solid var(--sea); padding-left:12px; }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; }
-    .card { padding:18px; border-radius:12px; background:#eaf7f7; }
+    .card { padding:18px; border-radius:16px; background:linear-gradient(135deg,#e9fbf7,#d8f2f6); border:1px solid #a8dfe0; }
     .card strong { display:block; color:var(--blue); font-size:21px; }
     .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
-    figure { margin:0; background:#f6fbfd; border-radius:14px; overflow:hidden; border:1px solid #dcecf1; }
+    figure { margin:0; background:#f6fffd; border-radius:16px; overflow:hidden; border:1px solid #a8dfe0; box-shadow:0 5px 14px #07598514; }
     figure img { width:100%; height:220px; object-fit:cover; display:block; }
+    figure img:hover { filter:saturate(1.12); }
     figcaption { padding:12px 14px; font-weight:600; }
     .wide img { height:auto; object-fit:contain; background:#fff; }
     table { width:100%; border-collapse:collapse; }
     th,td { padding:10px 12px; border-bottom:1px solid #dce8ee; text-align:left; }
-    th { color:white; background:var(--blue); }
-    code { padding:2px 6px; color:#075985; background:#e8f3f8; border-radius:5px; }
-    .note { padding:15px 18px; background:#fff4cf; border-left:5px solid #e0a400; border-radius:8px; }
-    a.button { display:inline-block; padding:10px 16px; color:white; background:var(--blue); border-radius:8px; text-decoration:none; margin:5px 6px 0 0; }
-    footer { padding:24px; color:#527083; text-align:center; }
+    th { color:white; background:linear-gradient(90deg,var(--deep),var(--blue)); }
+    code { padding:2px 6px; color:var(--deep); background:#d9f4f5; border-radius:5px; }
+    .note { padding:15px 18px; background:#fff1dc; border-left:5px solid var(--coral); border-radius:10px; }
+    a.button { display:inline-block; padding:10px 16px; color:white; background:linear-gradient(135deg,var(--blue),var(--sea)); border-radius:22px; text-decoration:none; margin:5px 6px 0 0; box-shadow:0 4px 10px #087e9f40; }
+    a.button:hover { background:linear-gradient(135deg,var(--deep),var(--blue)); transform:translateY(-1px); }
+    footer { padding:28px 24px; color:#527083; text-align:center; background:#d4eff1; border-top:1px solid #a8dfe0; }
   </style>
 </head>
 <body>

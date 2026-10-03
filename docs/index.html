@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ESP8266 PMS5003 空氣品質物聯網專案</title>
+  <style>
+    :root { --blue:#1167a8; --teal:#159a9c; --ink:#17324d; --bg:#f4f9fc; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font-family:"Microsoft JhengHei", system-ui, sans-serif; line-height:1.7; }
+    header { padding:64px 20px 56px; color:white; text-align:center; background:linear-gradient(135deg,#075985,#159a9c); }
+    header h1 { margin:0 0 10px; font-size:clamp(30px,5vw,54px); }
+    header p { margin:0; font-size:18px; opacity:.95; }
+    main { width:min(1120px, calc(100% - 32px)); margin:30px auto 60px; }
+    section { margin:26px 0; padding:28px; background:white; border-radius:18px; box-shadow:0 8px 24px #0b416d12; }
+    h2 { margin-top:0; color:var(--blue); border-left:6px solid var(--teal); padding-left:12px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; }
+    .card { padding:18px; border-radius:12px; background:#eaf7f7; }
+    .card strong { display:block; color:var(--blue); font-size:21px; }
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+    figure { margin:0; background:#f6fbfd; border-radius:14px; overflow:hidden; border:1px solid #dcecf1; }
+    figure img { width:100%; height:220px; object-fit:cover; display:block; }
+    figcaption { padding:12px 14px; font-weight:600; }
+    .wide img { height:auto; object-fit:contain; background:#fff; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { padding:10px 12px; border-bottom:1px solid #dce8ee; text-align:left; }
+    th { color:white; background:var(--blue); }
+    code { padding:2px 6px; color:#075985; background:#e8f3f8; border-radius:5px; }
+    .note { padding:15px 18px; background:#fff4cf; border-left:5px solid #e0a400; border-radius:8px; }
+    a.button { display:inline-block; padding:10px 16px; color:white; background:var(--blue); border-radius:8px; text-decoration:none; margin:5px 6px 0 0; }
+    footer { padding:24px; color:#527083; text-align:center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ESP8266 × PMS5003 空氣品質物聯網專案</h1>
+    <p>20261003 物聯網通訊實務研習成果</p>
+  </header>
+  <main>
+    <section>
+      <h2>專案簡介</h2>
+      <p>本專案使用 HW628 ESP8266 讀取 Plantower PMS5003 的 PM1.0、PM2.5 與 PM10，透過 Wi‑Fi 傳送至 MQTT Broker <code>mqttgo.io:1883</code>，主題為 <code>phmhs/aqi</code>，每 10 秒發布一次。</p>
+      <div class="note">PMS5003 不具備溫度與濕度感測功能，因此 temperature 與 humidity 以 -1 表示。</div>
+    </section>
+
+    <section>
+      <h2>開發成果</h2>
+      <div class="cards">
+        <div class="card"><strong>HW628</strong>ESP8266 主控板</div>
+        <div class="card"><strong>PMS5003</strong>PM 感測器</div>
+        <div class="card"><strong>COM4</strong>CH340 序列埠</div>
+        <div class="card"><strong>MQTT</strong>每 10 秒傳送資料</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>系統架構圖</h2>
+      <figure class="wide"><img src="../assets/system_architecture.png" alt="系統架構圖"></figure>
+    </section>
+
+    <section>
+      <h2>資料流程圖</h2>
+      <figure class="wide"><img src="../assets/data_flow.png" alt="資料流程圖"></figure>
+    </section>
+
+    <section>
+      <h2>實體成果照片</h2>
+      <div class="gallery">
+        <figure><img src="../assets/photo_1.png" alt="HW628 與 PMS5003 接線"><figcaption>HW628、PMS5003 與 CH340 接線</figcaption></figure>
+        <figure><img src="../assets/photo_3.png" alt="感測器實作環境"><figcaption>PMS5003 與 ESP8266 實體實作</figcaption></figure>
+        <figure><img src="../assets/photo_2.png" alt="MQTT 空氣品質成果"><figcaption>空氣品質資料成果畫面</figcaption></figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>接線與通訊設定</h2>
+      <table>
+        <tr><th>PMS5003</th><th>HW628 / ESP8266</th></tr>
+        <tr><td>VCC</td><td>5V / VIN / VU</td></tr>
+        <tr><td>GND</td><td>GND</td></tr>
+        <tr><td>TXD</td><td>D6 / GPIO12（ESP8266 RX）</td></tr>
+        <tr><td>RXD</td><td>D5 / GPIO14（ESP8266 TX，可選）</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>MQTT 資料範例</h2>
+      <pre><code>{"pm01":10,"pm25":15,"pm10":15,"temperature":-1.0,"humidity":-1.0}</code></pre>
+      <a class="button" href="https://github.com/wyj2013/pxt-test" target="_blank">查看 GitHub 專案</a>
+      <a class="button" href="../20261003物聯網通訊實務研習.docx">下載 Word 學習歷程</a>
+    </section>
+  </main>
+  <footer>20261003 物聯網通訊實務研習｜HW628 ESP8266 + PMS5003 + MQTT</footer>
+</body>
+</html>
